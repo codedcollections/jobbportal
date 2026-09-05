@@ -18,7 +18,11 @@ export default function Hero({ blok }) {
     : undefined
 
   return (
-    <section {...storyblokEditable(blok)} style={backgroundStyle}>
+    <section
+      className="flex justify-between"
+      {...storyblokEditable(blok)}
+      style={backgroundStyle}
+    >
       <h1>{blok.title}</h1>
       <p>{blok.description}</p>
       {blok.blocks?.map((nestedBlok) => (

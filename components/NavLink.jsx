@@ -1,7 +1,11 @@
 import { storyblokEditable } from "@storyblok/react/rsc"
 
 export default function NavLink({ blok }) {
-  const url = blok.link?.url ? blok.link?.url : blok.link?.cached_url
+  let url = blok.link?.url ? blok.link?.url : blok.link?.cached_url
+
+  if (url === "home") {
+    url = "/"
+  }
 
   return (
     <li className="flex uppercase" {...storyblokEditable(blok)}>

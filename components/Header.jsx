@@ -5,10 +5,13 @@ import {
 
 export default function Header({ blok }) {
   return (
-    <header {...storyblokEditable(blok)}>
-      {blok.logo?.filename && <img src={blok.logo.filename} alt="Logotyp" />}
-      <nav>
-        <ul>
+    <header
+      className="flex justify-between mb-7 pt-3 pb-6 px-9 border-b border-gray-200"
+      {...storyblokEditable(blok)}
+    >
+      <h2 className="text-3xl font-bold uppercase">{blok.logo}</h2>
+      <nav className="flex items-center">
+        <ul className="flex gap-5">
           {blok.navigation?.map((navBlok) => (
             <StoryblokServerComponent blok={navBlok} key={navBlok._uid} />
           ))}

@@ -4,8 +4,10 @@ export default function NavLink({ blok }) {
   const url = blok.link?.url ? blok.link?.url : blok.link?.cached_url
 
   return (
-    <li {...storyblokEditable(blok)}>
-      <a href={url}>{blok.label}</a>
+    <li className="flex uppercase" {...storyblokEditable(blok)}>
+      <a className="hover:font-bold" href={url}>
+        {blok.label}
+      </a>
     </li>
   )
 }

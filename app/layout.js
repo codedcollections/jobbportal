@@ -36,9 +36,11 @@ export default async function RootLayout({ children }) {
       {headerBlok && <StoryblokServerComponent blok={headerBlok} />}
       <html
         lang="en"
-        className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+        className={`bg-gray-200  h-full antialiased overflow-y-scroll`}
       >
-        <body className="min-h-full flex flex-col">{children}</body>
+        <body className="bg-white py-1 px-0.5 rounded-2xl container mx-auto my-3 flex flex-col">
+          <div className="container max-w-[90%] mx-auto">{children}</div>
+        </body>
       </html>
       {footerBlok && <StoryblokServerComponent blok={footerBlok} />}
     </StoryblokProvider>

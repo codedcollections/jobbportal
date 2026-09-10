@@ -20,7 +20,7 @@ export default function Toolbar({ blok, query, filter }) {
           filter={filter}
         />
       ))}
-      <Button />
+      <Button submitText={blok.submitText} />
     </form>
   )
 }

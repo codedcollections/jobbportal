@@ -4,8 +4,6 @@ import {
   StoryblokServerComponent,
 } from "@storyblok/react/rsc"
 
-import Input from "./ui/InputUI"
-
 export default function Footer({ blok }) {
   return (
     <footer

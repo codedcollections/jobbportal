@@ -4,7 +4,7 @@ import {
 } from "@storyblok/react/rsc"
 import Image from "next/image"
 
-export default function Hero({ blok }) {
+export default function Hero({ blok, query, filter }) {
   return (
     <section
       className="flex my-4 gap-1 items-center justify-between pb-8 border-b border-gray-200"
@@ -14,7 +14,12 @@ export default function Hero({ blok }) {
         <h1 className="text-6xl mb-2">{blok.title}</h1>
         <p>{blok.description}</p>
         {blok.input?.map((nestedBlok) => (
-          <StoryblokServerComponent blok={nestedBlok} key={nestedBlok._uid} />
+          <StoryblokServerComponent
+            blok={nestedBlok}
+            query={query}
+            filter={filter}
+            key={nestedBlok._uid}
+          />
         ))}
       </div>
       <Image

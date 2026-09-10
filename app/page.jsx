@@ -1,18 +1,23 @@
 import { notFound } from "next/navigation"
-import { StoryblokStory } from "@storyblok/react/rsc"
 import { getStoryblokApi } from "@/lib/storyblok"
+import { StoryblokServerComponent } from "@storyblok/react/rsc"
 
-export default async function HomePage() {
-  let story
-  try {
-    const storyblokApi = getStoryblokApi()
-    const { data } = await storyblokApi.get("cdn/stories/home", {
-      version: "draft",
-    })
-    story = data.story
-  } catch {
-    notFound()
-  }
+export default async function HomePage({ searchParams }) {
+  const params = await searchParams
 
-  return <StoryblokStory story={story} />
+  const query = params.q ?? ""
+  const filter = params.filter ?? ""
+
+  const storyblokApi = getStoryblokApi()
+  const { data } = await storyblokApi.get("cdn/stories/home", {
+    version: "published",
+  })
+
+  return (
+    <StoryblokServerComponent
+      blok={data.story.content}
+      query={query}
+      filter={filter}
+    />
+  )
 }

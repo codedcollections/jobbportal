@@ -2,13 +2,20 @@ import { storyblokEditable } from "@storyblok/react/rsc"
 import { getStoryblokApi } from "@/lib/storyblok"
 import Link from "next/link"
 
-export default async function JobList({ blok }) {
+export default async function JobList({ blok, query, filter }) {
   const storyblokApi = getStoryblokApi()
 
   const { data } = await storyblokApi.getStories({
-    version: "draft",
+    version: "published",
     starts_with: "job/",
     content_type: "job-post",
+    sort_by: "content.publishedAt:desc",
+    ...(query && { search_term: query }),
+    ...(filter && {
+      filter_query: {
+        department: { in: filter },
+      },
+    }),
   })
 
   const stories = data.stories

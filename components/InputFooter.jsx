@@ -1,15 +1,16 @@
 import { storyblokEditable } from "@storyblok/react/rsc"
 import InputUI from "./ui/InputUI"
+import ButtonUI from "./ui/ButtonUI"
 
-export default function Input({ blok }) {
-  console.log("input blok is:", blok)
+export default function InputFooter({ blok }) {
   return (
-    <div className="flex items-center" {...storyblokEditable(blok)}>
+    <form className="flex items-center gap-1" {...storyblokEditable(blok)}>
       <InputUI
         placeholder={blok.placeholder}
         submitText={blok.submitText}
         inputType={blok.inputType}
       />
-    </div>
+      <ButtonUI submitText={blok.submitText} />
+    </form>
   )
 }

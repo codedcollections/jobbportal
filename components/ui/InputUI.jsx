@@ -1,16 +1,10 @@
-export default function Input({ placeholder, submitText, inputType }) {
+export default function Input({ inputType, placeholder, query }) {
   return (
-    <div className="flex justify-center gap-2 ">
-      <input
-        className="flex p-1 bg-white border-2 rounded-sm border-gray-100 placeholder:text-sm "
-        type="text"
-        name={inputType}
-        placeholder={placeholder}
-        id={inputType}
-      />
-      <button className="px-2 bg-gray-800 rounded-lg text-white">
-        {submitText}
-      </button>
-    </div>
+    <input
+      className="flex p-1 bg-white border-2 rounded-sm border-gray-100 placeholder:text-sm "
+      type={inputType === "search" ? "search" : "email"}
+      name={inputType === "search" ? "q" : "e"}
+      placeholder={placeholder}
+    />
   )
 }
